@@ -1,6 +1,6 @@
 import React from 'react';
 import { User } from '@/features/chat/chat';
-import { Avatar } from './Avatar';
+import { Avatar } from '@/components/Avatar';
 
 interface ChatHeaderProps {
   recipient: User;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { ChatSidebarProps } from '@/types/Sidebar';
-import SidebarContent from './SideBarContent';
+import SidebarContent from '@/components/SideBarContent';
 
 const ANIMATION_DURATION = 300;
 

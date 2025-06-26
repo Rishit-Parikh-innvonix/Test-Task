@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { ChatProps } from '@/features/chat/chat';
 import { ChatHeader } from './ChatHeader';
 import { MessageBubble } from './MessageBubble';
-import { TypingIndicator } from './TypingIndicator';
+import { TypingIndicator } from '@/components/TypingIndicator';
 import { ChatInput } from './ChatInput';
 import { useAutoScroll } from '@/features/hooks/useAutoScroll';
 
@@ -54,12 +54,8 @@ export const Chat: React.FC<ChatProps> = ({
           </div>
         ) : (
           <>
-            {sortedMessages.map((message,index) => (
-              <MessageBubble
-                key={index}
-                message={message}
-                isOwn={message.senderId === 'user'}
-              />
+            {sortedMessages.map((message, index) => (
+              <MessageBubble key={index} message={message} isOwn={message.senderId === 'user'} />
             ))}
             <TypingIndicator userName={recipient.name} isVisible={isTyping} />
           </>

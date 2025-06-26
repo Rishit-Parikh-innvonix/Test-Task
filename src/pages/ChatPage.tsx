@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
-import { Chat } from '@/components/Chat';
-import ChatSidebar from '@/components/ChatSidebar';
+import { Chat } from '@/features/chat/components/Chat';
+import ChatSidebar from '@/features/chat/components/ChatSidebar';
 import { CurrentUser, Message } from '@/features/chat/chat';
 import { Menu } from 'lucide-react';
 import { useWebSocketStore } from '@/features/chat/store';

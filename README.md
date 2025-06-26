@@ -22,8 +22,8 @@ A production-ready, responsive AI-powered chat application built with React, Typ
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ai-chat-app.git
-cd ai-chat-app
+git clone https://github.com/Rishit-Parikh-innvonix/Test-Task
+cd Test-Task
 ```
 
 ### 2. Install Dependencies
@@ -71,21 +71,12 @@ Visit `http://localhost:5173` (or your configured port).
 
 ---
 
-### 5. Run Tests
-
-```bash
-npm run test
-```
-
-> Currently, unit tests can be extended for WebSocket, state, and form validation logic.
-
----
 
 ## 🧠 Design Choices
 
 ### 🔌 WebSocket API Design
 
-- The app uses **native `WebSocket`** instead of `socket.io` since the backend is powered by **FastAPI + Uvicorn**, which natively supports WebSockets.
+- The app uses **native `WebSocket`** instead of `socket.io` since the backend is powered by **FastAPI**, which natively supports WebSockets.
 - We handle **dynamic `conversation_id`**: it's excluded in the first message and included afterward using `live` message tracking from socket responses.
 
 ### 🧪 Async State Management
@@ -130,8 +121,6 @@ npm run test
 
 - ✅ Socket reconnection logic
 - ✅ Per-user chat history
-- 🔜 Add markdown/emoji support
-- 🔜 Deploy on Vercel + Docker for backend
 
 ---
 
