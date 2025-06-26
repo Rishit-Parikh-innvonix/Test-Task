@@ -54,9 +54,9 @@ export const Chat: React.FC<ChatProps> = ({
           </div>
         ) : (
           <>
-            {sortedMessages.map((message) => (
+            {sortedMessages.map((message,index) => (
               <MessageBubble
-                key={message.id}
+                key={index}
                 message={message}
                 isOwn={message.senderId === 'user'}
               />
@@ -67,7 +67,7 @@ export const Chat: React.FC<ChatProps> = ({
       </div>
 
       <div className="border-t border-gray-200 p-2 bg-white h-[13%] flex items-center">
-        <ChatInput onSendMessage={onSendMessage} placeholder={`Ask The Ai...`} />
+        <ChatInput onSendMessage={onSendMessage} placeholder={`Ask your AI assistant...`} />
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const ChatPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [liveConversationId, setLiveConversationId] = useState<number | null>(null);
-
+  const [liveMsgId, setLiveMsgId] = useState<string | null>(null);
   const wsStore = useWebSocketStore();
 
   // 🚀 Load or create the user on first render
@@ -81,65 +81,6 @@ const ChatPage: React.FC = () => {
     const socketUrl = `${import.meta.env.VITE_API_URL}/ws/${currentUser.id}`;
     wsStore.connect(socketUrl);
 
-    //   wsStore.onMessage((msg: any) => {
-    //     if (msg?.type !== 'chunk') return;
-    //     setIsTyping(false);
-
-    //     const isFirstResponse = msg.conversation_id && !liveConversationId;
-
-    //     setMessages(prev => {
-    //       let updatedMessages = [...prev];
-
-    //       // ✅ If it's the first assistant response (new chat)
-    //       if (isFirstResponse) {
-    //         setLiveConversationId(msg.conversation_id);
-    //         setSelectedConversationId(msg.conversation_id);
-
-    //         // Fetch updated sidebar
-    //         // getUserConversations(currentUser.id)
-    //         //   .then(setConversations)
-    //         //   .catch(err =>
-    //         //     console.error('❌ Failed to refresh conversations after assistant reply:', err)
-    //         //   );
-
-    //         // Reassign temp user messages
-    //         // updatedMessages = updatedMessages.map((m, i) =>
-    //         //   m.senderId === 'user' && !String(m.id).startsWith('conv-')
-    //         //     ? { ...m, id: `conv-${msg.conversation_id}-${i}` }
-    //         //     : m
-    //         // );
-    //       }
-
-    //       const lastMsg = updatedMessages[updatedMessages.length - 1];
-
-    //       // Append to ongoing assistant stream
-    //       if (lastMsg?.senderId === 'assistant' && lastMsg.id === 'live') {
-    //         return [
-    //           ...updatedMessages.slice(0, -1),
-    //           { ...lastMsg, text: lastMsg.text + msg.content, status: 'delivered' },
-    //         ];
-    //       }
-
-    //       // Create new assistant message
-    //       return [
-    //         ...updatedMessages,
-    //         {
-    //           id: 'live',
-    //           text: msg.content,
-    //           senderId: 'assistant',
-    //           timestamp: new Date(),
-    //           status: 'delivered',
-    //         },
-    //       ];
-    //     });
-    //   });
-
-    //   return () => {
-    //     wsStore.disconnect();
-    //     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
-    //   };
-    // }, [currentUser, liveConversationId]);
-
     wsStore.onMessage((msg: any) => {
       if (msg.type === 'chunk') {
         setIsTyping(false);
@@ -169,7 +110,8 @@ const ChatPage: React.FC = () => {
               },
             ];
           }
-
+          const newLiveId = `live-${Date.now()}`;
+          setLiveMsgId(newLiveId);
           return [
             ...prev,
             {
@@ -219,7 +161,6 @@ const ChatPage: React.FC = () => {
   if (error) {
     return <div className="h-screen flex items-center justify-center text-red-500">{error}</div>;
   }
-  console.log(messages);
 
   return (
     <div className="h-full w-full overflow-hidden">

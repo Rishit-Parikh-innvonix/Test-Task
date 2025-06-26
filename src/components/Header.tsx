@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ username, email, onSearch, onSettings }
               <MessageCircle size={18} className="text-white" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold text-chat-gray-900">AI Chat</h1>
+              <h1 className="text-sm md:text-lg font-semibold text-chat-gray-900 ">AI Chat</h1>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
   return (
     <>
       {/* ✅ Desktop */}
-      <aside className="hidden lg:flex w-80 h-full bg-chat-bg-secondary border-r border-chat-gray-100 flex-col">
+      <aside className="hidden lg:flex w-64 h-full bg-chat-bg-secondary border-r border-chat-gray-100 flex-col">
         <SidebarContent
           users={users}
           selectedUserId={selectedUserId}
@@ -42,7 +42,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
       </aside>
 
       {/* ✅ Tablet */}
-      <aside className="hidden md:flex lg:hidden w-72 h-full bg-chat-bg-secondary border-r border-chat-gray-100 flex-col">
+      <aside className="hidden md:flex lg:hidden w-67 h-full bg-chat-bg-secondary border-r border-chat-gray-100 flex-col">
         <SidebarContent
           users={users}
           selectedUserId={selectedUserId}
