@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ChatPage from '@/pages/ChatPage';
 import LoginPage from '@/pages/LoginPage';
+import NotFound from '@/pages/NotFound';
 import ProtectedRoute from '@/routes/ProtectedRoute';
 import GuestRoute from '@/routes/GuestRoute';
 
@@ -19,6 +20,9 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/chat" element={<ChatPage />} />
           </Route>
+
+          {/* 404 Not Found fallback */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
