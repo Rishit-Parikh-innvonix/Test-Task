@@ -128,6 +128,11 @@ const ChatPage: React.FC = () => {
         });
       }
     });
+    const handleUnload = () => {
+      wsStore.disconnect();
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
 
     return () => {
       wsStore.disconnect();
