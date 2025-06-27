@@ -8,6 +8,7 @@ import { createUser, getUserConversations } from '@/api/user';
 import { getMessagesByConversationId } from '@/api/conversations';
 import Header from '@/components/Header';
 import dayjs from 'dayjs';
+import Loader from '@/components/Loader';
 
 const LOCAL_STORAGE_KEY = 'chat_user';
 
@@ -162,12 +163,20 @@ const ChatPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center text-gray-500">Loading chat...</div>
+      <div className="h-screen flex items-center justify-center bg-white">
+        <Loader message="Loading chat..." />
+      </div>
     );
   }
 
   if (error) {
     return <div className="h-screen flex items-center justify-center text-red-500">{error}</div>;
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="h-screen flex items-center justify-center text-gray-500">Session Expired</div>
+    );
   }
   return (
     <div className="h-full w-full overflow-hidden">
@@ -217,7 +226,7 @@ const ChatPage: React.FC = () => {
         {/* Chat Panel */}
         <main className="w-full md:w-[75%] bg-gradient-to-br from-blue-50 to-purple-50 p-4 h-full">
           <Chat
-            recipient={{ id: 'assistant', name: 'AI', isOnline: true }}
+            recipient={{ id: 'assistant', name: currentUser?.username, isOnline: true }}
             messages={messages}
             onSendMessage={handleSendMessage}
             isTyping={isTyping}
@@ -238,11 +247,13 @@ const ChatPage: React.FC = () => {
               setSelectedConversationId(idNum);
               setLiveConversationId(idNum);
               setIsSidebarOpen(false);
+              setSuppressNextMessageLoad(false);
             }}
             onNewChat={() => {
               setSelectedConversationId(null);
               setLiveConversationId(null);
               setMessages([]);
+              setSuppressNextMessageLoad(false);
               setIsSidebarOpen(false);
             }}
             isOpen={isSidebarOpen}

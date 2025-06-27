@@ -57,7 +57,7 @@ export const Chat: React.FC<ChatProps> = ({
             {sortedMessages.map((message, index) => (
               <MessageBubble key={index} message={message} isOwn={message.senderId === 'user'} />
             ))}
-            <TypingIndicator userName={recipient.name} isVisible={isTyping} />
+            <TypingIndicator isVisible={isTyping} />
           </>
         )}
       </div>
