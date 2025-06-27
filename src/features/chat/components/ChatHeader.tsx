@@ -34,7 +34,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({ recipient, onBack, class
       <Avatar user={recipient} showOnlineStatus className="flex-shrink-0" />
 
       <div className="min-w-0">
-        <h2 className="font-semibold text-gray-900 truncate">{recipient.name}</h2>
+        <h2 className="font-semibold text-gray-900 truncate">AI Chat</h2>
       </div>
     </div>
   );
