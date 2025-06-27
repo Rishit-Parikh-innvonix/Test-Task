@@ -4,7 +4,7 @@ import { ChatHeader } from './ChatHeader';
 import { MessageBubble } from './MessageBubble';
 import { TypingIndicator } from '@/components/TypingIndicator';
 import { ChatInput } from './ChatInput';
-import { useAutoScroll } from '@/features/hooks/useAutoScroll';
+import { useAutoScroll } from '@/hooks/useAutoScroll';
 
 export const Chat: React.FC<ChatProps> = ({
   recipient,

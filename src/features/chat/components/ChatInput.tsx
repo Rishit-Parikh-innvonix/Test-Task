@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { useDebounce } from '@/features/hooks/useDebounce';
+import { useDebounce } from '@/hooks/useDebounce';
 
 interface ChatInputProps {
   onSendMessage: (text: string) => void;
