@@ -17,7 +17,7 @@ export const useWebSocketStore = create<WebSocketStore>((set, get) => ({
   isConnected: false,
 
   connect: (url: string) => {
-    console.log('[WS] Connectedssss:', url);
+    console.log('[WS] Connected:', url);
 
     if (get().isConnected || get().ws) return;
     const ws = new WebSocket(url);
